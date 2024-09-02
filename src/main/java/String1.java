@@ -22,7 +22,7 @@ public class String1
         System.out.println(s.conCat("abc", "cat"));
         System.out.println(s.minCat("Hello", "Hi"));
         System.out.println(s.withoutX("xHix"));
-        System.out.println(s.deFront("Hello"));
+        System.out.println(s.deFront("Hbello"));
     }
 
     public String1()
@@ -93,9 +93,9 @@ public class String1
      * extraEnd("Hi") → "HiHiHi"
      */
     public String extraEnd(String str) {
-        str=str.substring(3);
-        str=str+str+str;
-        return unimplemented;
+        int y=str.length();
+        str= str.substring(y-2);
+        return str+str+str;
     }
 
     /*
@@ -122,9 +122,11 @@ public class String1
      * firstHalf("WooHoo") → "Woo"
      * firstHalf("HelloThere") → "Hello"
      * firstHalf("abcdef") → "abc"
+     * there is no print staement for this? 
      */
     public String firstHalf(String str) {
-        return unimplemented;
+        int z=(str.length())/2;
+        return str.substring(0,z);
     }
 
     /*
@@ -135,7 +137,8 @@ public class String1
      * withoutEnd("coding") → "odin"
      */
     public String withoutEnd(String str) {
-        return unimplemented;
+        int z= str.length()-1;
+        return str.substring(1,z);
     }
 
     /*
@@ -147,7 +150,14 @@ public class String1
      * comboString("aaa", "b") → "baaab"
      */
     public String comboString(String a, String b) {
-        return unimplemented;
+        int lengthA=a.length();
+        int lengthB=b.length();
+        if(lengthA>lengthB){
+            return b+a+b;
+        }
+        else{
+            return a+b+a;
+        }
     }
 
     /*
@@ -158,7 +168,10 @@ public class String1
      * middleThree("solving") → "lvi"
      */
     public String middleThree(String str) {
-        return unimplemented;
+        int x= (str.length())/2;
+        int z=x-1;
+        int y=x+2;
+        return str.substring(z,y);
     }
 
     /*
@@ -169,7 +182,13 @@ public class String1
      * extraFront("H") → "HHH"
      */
     public String extraFront(String str) {
-        return unimplemented;
+        int x=str.length();
+        if(x>2){ 
+        return str.substring(0,2)+str.substring(0,2)+str.substring(0,2);
+    }
+        else{
+        return str+str+str;
+    }
     }
 
     /*
@@ -180,7 +199,7 @@ public class String1
      * left2("Hi") → "Hi"
      */
     public String left2(String str) {
-        return unimplemented;
+        return str.substring(2)+str.substring(0,2);
     }
 
     /*
@@ -192,7 +211,13 @@ public class String1
      * hasBad("xxbadxx") → false
      */
     public boolean hasBad(String str) {
+        int x= str.indexOf("bad");
+        if(x<=2){
+            return true;
+        }
+        else{
         return false;
+    }
     }
 
     /*
@@ -204,7 +229,15 @@ public class String1
      * conCat("abc", "") → "abc"
      */
     public String conCat(String a, String b) {
-        return unimplemented;
+        int x= a.length()-1;
+        String fullA= a.substring(x);
+        String fullB= b.substring(0,1);
+        if(fullA.equals(fullB)){
+            return a.substring(0,x)+b.substring(1);
+        }
+        else{
+        return a+b;
+    }
     }
 
     /*
@@ -218,7 +251,19 @@ public class String1
      *minCat("java", "Hello") → "javaello"
      */
     public String minCat(String a, String b) {
-        return unimplemented;
+        int aLength= a.length();
+        int bLength= b.length();
+        int x= aLength-bLength;
+        int y= bLength-aLength;
+        if(aLength>bLength){
+            return a.substring(x)+b;
+        }
+        if(aLength<bLength){
+            return a+b.substring(y);
+        }
+        else{
+          return a+b;  
+        }
     }
 
     /*
@@ -229,7 +274,14 @@ public class String1
      * withoutX("Hxix") → "Hxi"
      */
     public String withoutX(String str) {
-        return unimplemented;
+        if (str!=null &&  str.length()>0 && str.charAt(str.length()-1) == 'x'){
+            str = str.substring(0, str.length() - 1);
+              
+        }
+        if(str!=null &&  str.length()>0 && str.charAt(0) == 'x'){
+            str=str.substring(1);
+    }
+         return str;
     }
 
     /*
@@ -241,8 +293,45 @@ public class String1
      * deFront("java") → "va"
      * deFront("away") → "aay"
      */
-    public String deFront(String str) {    
-        return unimplemented;
+    public String deFront(String str) { 
+        int char1=0;
+        int char2=0;
+        
+        if (str!=null &&  str.length()>0 && str.charAt(0) == 'a'){
+            char1=1;
+        }
+        if(str!=null &&  str.length()>0 && str.charAt(1) == 'b'){
+                char2=1;
+            }
+        //first and second char are a and b
+        
+        if (char1==1 && char2==1) {
+          str=str;  
+        }
+        //first char is a and second char is not b
+        else if (char1==1 && char2!=1){
+                str= str.substring(0,1)+str.substring(2);
+        }
+        else if(char1!=1 && char2==1){
+            str= str.substring(1);
+        }
+        else{
+           str= str.substring(2); 
+        }
+     /*
+        //first char is not a and second char is b
+        else if (char1=false){
+            if(char2=true){
+                str= str.substring(1);
+        }
+        }
+        //both are not a and b
+    else if (char1=false){
+            if(char2=false){
+                str= str.substring(2);
+        } 
     }
-
+    */
+    return str;
+}
 }
