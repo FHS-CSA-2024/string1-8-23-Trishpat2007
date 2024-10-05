@@ -66,6 +66,8 @@ package src.main.java;
      */
     public String makeTags(String tag, String word) {
         tag = "<"+tag+">";
+
+        //This will only work if the tag is "i"
         String italic=tag+word+"</i>";
         return italic;
     }
